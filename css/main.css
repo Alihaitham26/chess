@@ -1,0 +1,224 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.board {
+  background-color: blue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+}
+
+.h8 img, .h7 img, .h6 img, .h5 img, .h4 img, .h3 img, .h2 img, .h1 img, .f8 img, .f7 img, .f6 img, .f5 img, .f4 img, .f3 img, .f2 img, .f1 img, .d8 img, .d7 img, .d6 img, .d5 img, .d4 img, .d3 img, .d2 img, .d1 img, .b8 img, .b7 img, .b6 img, .b5 img, .b4 img, .b3 img, .b2 img, .b1 img, .g8 img, .g7 img, .g6 img, .g5 img, .g4 img, .g3 img, .g2 img, .g1 img, .e8 img, .e7 img, .e6 img, .e5 img, .e4 img, .e3 img, .e2 img, .e1 img, .c8 img, .c7 img, .c6 img, .c5 img, .c4 img, .c3 img, .c2 img, .c1 img, .a8 img, .a7 img, .a6 img, .a5 img, .a4 img, .a3 img, .a2 img, .a1 img {
+  width: 70%;
+  height: 90%;
+}
+
+.h7, .h5, .h3, .h1, .f7, .f5, .f3, .f1, .d7, .d5, .d3, .d1, .b7, .b5, .b3, .b1, .g8, .g6, .g4, .g2, .e8, .e6, .e4, .e2, .c8, .c6, .c4, .c2, .a8, .a6, .a4, .a2 {
+  background-color: #EEEED2;
+  width: 12.5%;
+  height: 12.5%;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.h8, .h6, .h4, .h2, .f8, .f6, .f4, .f2, .d8, .d6, .d4, .d2, .b8, .b6, .b4, .b2, .g7, .g5, .g3, .g1, .e7, .e5, .e3, .e1, .c7, .c5, .c3, .c1, .a7, .a5, .a3, .a1 {
+  background-color: #769656;
+  width: 12.5%;
+  height: 12.5%;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.a1::before {
+  content: "a";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.b1::before {
+  content: "b";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.c1::before {
+  content: "c";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.d1::before {
+  content: "d";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.e1::before {
+  content: "e";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.f1::before {
+  content: "f";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.g1::before {
+  content: "g";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.h1::before {
+  content: "h";
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+.a1::after {
+  content: "1";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.a2::after {
+  content: "2";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.a3::after {
+  content: "3";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.a4::after {
+  content: "4";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.a5::after {
+  content: "5";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.a6::after {
+  content: "6";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.a7::after {
+  content: "7";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.a8::after {
+  content: "8";
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.dot {
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  height: 50%;
+  background-color: #000;
+  border-radius: 50%;
+  opacity: 70%;
+}
+
+@media (max-width: 768px) {
+  .board {
+    width: 300px;
+    height: 300px;
+  }
+}
+img::-moz-selection {
+  background: none;
+}
+img::selection {
+  background: none;
+}
+
+.win {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 5;
+  text-align: center;
+  background-color: #123;
+  color: #fff;
+  padding: 10px;
+  width: 50%;
+  border-radius: 10px;
+}
+.win button {
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.upgrade-white, .upgrade-black {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 5;
+  width: 80%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #fff;
+  background-color: #123;
+  text-align: center;
+  border-radius: 10px;
+}
+.upgrade-white img, .upgrade-black img {
+  width: 20%;
+  height: auto;
+  padding: 5px;
+}/*# sourceMappingURL=main.css.map */

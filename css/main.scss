@@ -1,0 +1,162 @@
+*{box-sizing: border-box;}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.board {
+    background-color: blue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    $demention: 500px;
+    width: $demention ;
+    height: $demention ;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+}
+%image{
+    img{
+        width: 70%;
+        height: 90%;
+    }
+}
+@mixin globalSquare {
+    width: 12.5%;
+    height: 12.5%;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+%color2 {
+    background-color: #EEEED2;
+    @include globalSquare()
+}
+
+%color1 {
+    background-color: #769656;
+    @include globalSquare()
+}
+
+$vertical1: "a", "c", "e", "g";
+$vertical2: "b", "d", "f", "h";
+$vertical:'a','b','c','d','e','f','g','h';
+@each $letter in $vertical {
+    .#{$letter}1::before{
+        content: $letter;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+    }
+}
+$i:1;
+@while $i<9 {
+    .a#{$i}::after{
+        content: ""+$i;
+        position: absolute;
+        z-index: 1;
+        right: 110%;
+    }
+    $i:$i+1;
+}
+@each $letter in $vertical1 {
+    $i: 1;
+
+    @while $i<9 {
+        .#{$letter}#{$i} {
+            @extend %color1;
+            @extend %image;
+        }
+
+        $i: $i+1;
+
+        .#{$letter}#{$i} {
+            @extend %color2;
+            @extend %image;
+        }
+
+        $i: $i+1;
+    }
+}
+
+@each $letter in $vertical2 {
+    $i: 1;
+
+    @while $i<9 {
+        .#{$letter}#{$i} {
+            @extend %color2;
+            @extend %image;
+        }
+
+        $i: $i+1;
+
+        .#{$letter}#{$i} {
+            @extend %color1;
+            @extend %image;
+        }
+
+        $i: $i+1;
+    }
+}
+.dot{
+    $R:50%;
+    position: absolute;
+    z-index: 2;
+    width: $R;
+    height: $R;
+    background-color: #000;
+    border-radius: 50%;
+    opacity: 70%;
+}
+@media (max-width:768px) {
+    .board {
+        $demention: 300px;
+        width: $demention ;
+        height: $demention ;
+    }
+}
+img::selection{
+    background: none;
+}
+.win{
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 5;
+    text-align: center;
+    background-color: #123;
+    color: #fff;
+    padding: 10px;
+    width: 50%;
+    border-radius: 10px;
+    button{
+        width: 80px;
+        height: 30px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+    }
+}
+.upgrade-white,.upgrade-black{
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 5;
+    width: 80%;
+    height: fit-content;
+    color: #fff;
+    background-color: #123;
+    text-align: center;
+    border-radius: 10px;
+    img{
+        width: 20%;
+        height: auto;
+        padding: 5px;
+    }
+}
