@@ -1,6 +1,8 @@
 let whiteKing
 let blackKing
 function afterPlay(){
+    
+    specialMoves={}
     ////used to check afterplay some states
     //check if white and black kind is dead so killer win
     uncheck(whiteKing)
@@ -25,7 +27,6 @@ function afterPlay(){
     for(let key in chess.whitePieces){
         let piece=chess.whitePieces[key]
         let place=piece.position
-        
         if(!piece.isAlive){
             delete chess.whitePieces[piece]
             continue
@@ -40,9 +41,12 @@ function afterPlay(){
         }
         if(isWhiteTurn){
             board[place].onclick=()=>{
+                preSelect=piece
                 let moves=piece.getAvailablePlaces()
                 for(let i=0;i<moves.length;i++){
-                    board[moves[i]].html.innerHTML+='<div class="dot"><div/>'
+                    if(moves[i]){
+                        board[moves[i]].html.innerHTML+='<div class="dot"><div/>'
+                    }
                 }
                 select=true
                 selectedPiece=piece
@@ -70,9 +74,12 @@ function afterPlay(){
         }
         if(!isWhiteTurn){
             board[place].onclick=()=>{
+                preSelect=piece
                 let moves=piece.getAvailablePlaces()
                 for(let i=0;i<moves.length;i++){
-                    board[moves[i]].html.innerHTML+='<div class="dot"><div/>'
+                    if(moves[i]){
+                        board[moves[i]].html.innerHTML+='<div class="dot"><div/>'
+                    }
                 }
                 select=true
                 selectedPiece=piece

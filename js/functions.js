@@ -59,3 +59,20 @@ function uncheck(kingPiece){
         kingPiece.square.html.style.border=null
     }
 }
+function isCheck(position,isWhite){
+    isCheckTest=true
+    let enemyPeices=isWhite?chess.blackPieces:chess.whitePieces
+    for(let pieceKey in enemyPeices){
+        for(let move of enemyPeices[pieceKey].getAvailablePlaces()){
+            if(position===move){
+                isCheckTest=false
+                return true
+            }
+        }
+    }
+    isCheckTest=false
+    return false
+}
+Array.prototype.delete=function (index){
+    return [...this.slice(0,index),...this.slice(index+1,this.length)]
+}

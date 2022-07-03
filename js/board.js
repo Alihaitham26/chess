@@ -21,7 +21,7 @@ class Board {
             this[place].onselect=()=>{
                 select=false
                 let moves=selectedPiece.getAvailablePlaces()
-                for(let i=0;i<moves.length;i++){
+                for(let i=0;i<moves.length&&board[moves[i]];i++){
                     board[moves[i]].html.innerHTML=null
                     if(board[moves[i]].isFull){
                         board[moves[i]].piece.draw()
@@ -35,6 +35,11 @@ class Board {
                         selectedPiece.moveTo(place)
                     }else{
                         selectedPiece.moveTo(place)
+                    }
+                    for(let key in specialMoves){
+                        if(specialMoves[key].condition(place)){
+                            specialMoves[key].action()
+                        }
                     }
                     afterPlay()
                 }

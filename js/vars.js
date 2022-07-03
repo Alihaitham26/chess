@@ -14,4 +14,7 @@ for(let i=0;i<letters.length;i++){
 //select and selected place using in board
 let select=false
 let selectedPiece
+//used to naming the upgraded pawn
+let isCheckTest=false
 let cloneNumber=1
+let specialMoves={}
