@@ -30,7 +30,6 @@ function afterPlay(){
         let piece=chess.whitePieces[key]
         let place=piece.position
         if(!piece.isAlive){
-            console.log(piece)
             delete chess.whitePieces[piece]
             continue
         }
@@ -44,6 +43,9 @@ function afterPlay(){
         }
         if(isWhiteTurn){
             board[place].onclick=()=>{
+                for(func of beforeClick){
+                    func()
+                }
                 preSelect=piece
                 let moves=piece.getAvailablePlaces()
                 for(let i=0;i<moves.length;i++){
@@ -55,6 +57,7 @@ function afterPlay(){
                 selectedPiece=piece
             }
         }else{
+            piece.positions.push(piece.position)
             board[piece.position].onclick=()=>{}
         }
     }
@@ -62,6 +65,7 @@ function afterPlay(){
     for(let key in chess.blackPieces){
         let piece=chess.blackPieces[key]
         let place=piece.position
+        piece.getAvailablePlaces()
         if(!piece.isAlive){
             delete chess.blackPieces[piece]
             continue
@@ -88,10 +92,10 @@ function afterPlay(){
                 selectedPiece=piece
             }
         }else{
+            piece.positions.push(piece.position)
             board[piece.position].onclick=()=>{}
         }
     }
     isWhiteTurn=!isWhiteTurn
-    console.log(board)
     afterTurn=[]
 }

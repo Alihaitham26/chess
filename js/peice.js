@@ -12,6 +12,7 @@ class Piece {
         if(!peicesNames.includes(type)){
             throw new Error(`"${type}" is not a peice in chess`)
         }
+        this.positions=[]
         this.lastPosition=null
         this.notMoved=true
         this.isFirstMove=false
@@ -48,10 +49,17 @@ class Piece {
     }
     //earse peice and draw it in new place
     moveTo(newPosition) {
-        
         this.isFirstMove=this.notMoved
         this.erase()
         this.notMoved=false
+        if(this.type==="pawn"){
+            if(isOn(squaresMove(newPosition,1,0))&&board[squaresMove(newPosition,1,0)].isFull&&board[squaresMove(newPosition,1,0)].piece.type==="pawn"){
+                this.isPawnRightWhenMoved=true
+            }
+            if(isOn(squaresMove(newPosition,-1,0))&&board[squaresMove(newPosition,-1,0)].isFull&&board[squaresMove(newPosition,-1,0)].piece.type==="pawn"){
+                this.isPawnLeftWhenMoved=true
+            }
+        }
         this.lastPosition=this.position
         this.position = newPosition
         this.square=board[this.position]

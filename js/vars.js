@@ -1,4 +1,4 @@
-//delete print because i use it instead of console.log as i love python
+//delete print because i use it instead of console.log in some times as i love python
 delete print
 let isWhiteTurn=true
 const peicesNames=["pawn","rook","knight","bishop","queen","king"]
@@ -19,3 +19,5 @@ let isCheckTest=false
 let cloneNumber=1
 let specialMoves={}
 let afterTurn=[]
+let beforeClick=[]
+let hello=[1,2,3]
