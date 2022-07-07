@@ -11,53 +11,47 @@ function getAvailablePlacesFunction(piece) {
         }
         return availablePlaces
     }
+    //pawn moves function
     if (piece.type === "pawn") {
-        if (piece.isWhite) {
-            return () => {
-                let avaliblePlace = []
-                let front = squaresMove(piece.position, 0, 1)
-                let right = squaresMove(piece.position, 1, 1)
-                let left = squaresMove(piece.position, -1, 1)
-                if (piece.isFirstMove) {
-                    let superFront = squaresMove(piece.position, 0, 2)
-                    if (isOn(superFront) && !board[superFront].isFull && !board[front].isFull) {
-                        avaliblePlace.push(superFront)
+        let yDirection=piece.isWhite?1:-1
+        let ySpecial=piece.isWhite?"5":"4"
+        return () => {
+            let avaliblePlace = []
+            let front = squaresMove(piece.position, 0, yDirection)
+            let right = squaresMove(piece.position, 1, yDirection)
+            let left = squaresMove(piece.position, -1, yDirection)
+            let specialKillLeft=squaresMove(piece.position, -1,0)
+            let specialKillRight=squaresMove(piece.position, 1,0)
+            let specialMoveLeft=squaresMove(piece.position, -1,yDirection)
+            if (piece.notMoved) {
+                let superFront = squaresMove(piece.position, 0, 2*yDirection)
+                if (isOn(superFront) && !board[superFront].isFull && !board[front].isFull) {
+                    avaliblePlace.push(superFront)
+                }
+            }
+            if (isOn(front) && !board[front].isFull && !isCheckTest) {
+                avaliblePlace.push(front)
+            }
+            if (isOn(right) && board[right].isFull && board[right].piece.isWhite!=piece.isWhite) {
+                avaliblePlace.push(right)
+            }
+            if (isOn(left) && board[left].isFull && board[left].piece.isWhite!=piece.isWhite) {
+                avaliblePlace.push(left)
+            }
+            if(piece.pawnSpeicalKill.left&&isOn(specialKillLeft)&&piece.position[1]===ySpecial){
+            if(board[specialKillLeft].isFull&&board[specialKillLeft].piece.isWhite!==piece.isWhite&&board[specialKillLeft].piece){
+                if(selectedPiece===piece){
+                    afterTurn.push(()=>{piece.pawnSpeicalKill.left=false})
+                }
+                avaliblePlace.push(squaresMove(piece.position,-1,yDirection))
+                specialMoves["pawnKill"]={
+                    condition:(selectedPosition)=>(selectedPosition==specialMoveLeft,selectedPiece===piece),
+                    action:(selectedPosition)=>{
+                        killIt(board[specialKillLeft].piece)
                     }
                 }
-                if (isOn(front) && !board[front].isFull&&!isCheckTest) {
-                    avaliblePlace.push(front)
-                }
-                if ((isOn(right) && board[right].isFull && !board[right].piece.isWhite)||isCheckTest) {
-                    avaliblePlace.push(right)
-                }
-                if ((isOn(left) && board[left].isFull && !board[left].piece.isWhite)||isCheckTest) {
-                    avaliblePlace.push(left)
-                }
-                return avaliblePlace
-            }
-        } else {
-            return () => {
-                let avaliblePlace = []
-                let front = squaresMove(piece.position, 0, -1)
-                let right = squaresMove(piece.position, 1, -1)
-                let left = squaresMove(piece.position, -1, -1)
-                if (piece.isFirstMove) {
-                    let superFront = squaresMove(piece.position, 0, -2)
-                    if (isOn(superFront) && !board[superFront].isFull && !board[front].isFull&&!isCheckTest) {
-                        avaliblePlace.push(superFront)
-                    }
-                }
-                if (isOn(front) && !board[front].isFull&&!isCheckTest) {
-                    avaliblePlace.push(front)
-                }
-                if ((isOn(right) && board[right].isFull && board[right].piece.isWhite)||isCheckTest) {
-                    avaliblePlace.push(right)
-                }
-                if ((isOn(left) && board[left].isFull && board[left].piece.isWhite)||isCheckTest) {
-                    avaliblePlace.push(left)
-                }
-                return avaliblePlace
-            }
+            }}
+            return avaliblePlace
         }
     } else if (piece.type === "rook") {
         return () => [...move(0, 1), ...move(0, -1), ...move(-1, 0), ...move(1, 0)]
@@ -103,8 +97,8 @@ function getAvailablePlacesFunction(piece) {
                 && piece.position === squaresMove(rookPosition, -3, 0)
                 && !board[squaresMove(position, 1, 0)].isFull
                 && !board[squaresMove(position, 2, 0)].isFull
-                && board[rookPosition].piece.isFirstMove
-                && piece.isFirstMove) {
+                && board[rookPosition].piece.notMoved
+                && piece.notMoved) {
                 availablePlaces.push(squaresMove(position, 2, 0))
                 specialMoves["kingMove"] = {
                     condition: (selectedPosition) => (
@@ -123,8 +117,8 @@ function getAvailablePlacesFunction(piece) {
                 && !board[squaresMove(position, -1, 0)].isFull
                 && !board[squaresMove(position, -2, 0)].isFull
                 && !board[squaresMove(position, -3, 0)].isFull
-                && board[rookPosition].piece.isFirstMove
-                && piece.isFirstMove) {
+                && board[rookPosition].piece.notMoved
+                && piece.notMoved) {
                 availablePlaces.push(squaresMove(position, -2, 0))
                 specialMoves["kingMove"] = {
                     condition: (selectedPosition) => (

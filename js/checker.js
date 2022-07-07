@@ -1,7 +1,9 @@
 let whiteKing
 let blackKing
 function afterPlay(){
-    
+    for(func of afterTurn){
+        func()
+    }
     specialMoves={}
     ////used to check afterplay some states
     //check if white and black kind is dead so killer win
@@ -28,6 +30,7 @@ function afterPlay(){
         let piece=chess.whitePieces[key]
         let place=piece.position
         if(!piece.isAlive){
+            console.log(piece)
             delete chess.whitePieces[piece]
             continue
         }
@@ -89,4 +92,6 @@ function afterPlay(){
         }
     }
     isWhiteTurn=!isWhiteTurn
+    console.log(board)
+    afterTurn=[]
 }

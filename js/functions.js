@@ -73,6 +73,12 @@ function isCheck(position,isWhite){
     isCheckTest=false
     return false
 }
+function killIt(piece){
+    board[piece.position].html.innerHTML=null
+    piece.isAlive=false
+    board[piece.position].isFull=false
+    board[piece.position].piece=null
+}
 Array.prototype.delete=function (index){
     return [...this.slice(0,index),...this.slice(index+1,this.length)]
 }

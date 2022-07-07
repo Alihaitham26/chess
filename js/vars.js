@@ -18,3 +18,4 @@ let selectedPiece
 let isCheckTest=false
 let cloneNumber=1
 let specialMoves={}
+let afterTurn=[]

@@ -29,16 +29,14 @@ class Board {
                 }
                 if(moves.includes(place)){
                     if(this[place].isFull){
-                        this[place].html.innerHTML=null
-                        this[place].piece.isAlive=false
-                        this[place].piece=null
+                        killIt(this[place].piece)
                         selectedPiece.moveTo(place)
                     }else{
                         selectedPiece.moveTo(place)
                     }
                     for(let key in specialMoves){
                         if(specialMoves[key].condition(place)){
-                            specialMoves[key].action()
+                            specialMoves[key].action(place)
                         }
                     }
                     afterPlay()

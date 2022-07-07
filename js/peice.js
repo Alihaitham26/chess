@@ -2,12 +2,20 @@ class Piece {
     static piecesCreated = 0
     
     constructor(type, isWhite, position) {
+        if(type==="pawn"){
+            this.pawnSpeicalKill={
+                left:true,
+                right:true
+            }
+        }
         Piece.piecesCreated+=1
         if(!peicesNames.includes(type)){
             throw new Error(`"${type}" is not a peice in chess`)
         }
         this.lastPosition=null
-        this.isFirstMove=true
+        this.notMoved=true
+        this.isFirstMove=false
+        this.lastPosition=null
         this.isAlive=true
         this.type = type
         this.isWhite = isWhite
@@ -40,8 +48,10 @@ class Piece {
     }
     //earse peice and draw it in new place
     moveTo(newPosition) {
+        
+        this.isFirstMove=this.notMoved
         this.erase()
-        this.isFirstMove=false
+        this.notMoved=false
         this.lastPosition=this.position
         this.position = newPosition
         this.square=board[this.position]
