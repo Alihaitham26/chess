@@ -101,14 +101,14 @@ $i:1;
     }
 }
 .dot{
-    $R:50%;
+    $R:45%;
     position: absolute;
     z-index: 2;
     width: $R;
     height: $R;
     background-color: #000;
     border-radius: 50%;
-    opacity: 70%;
+    opacity: 80%;
 }
 @media (max-width:768px) {
     .board {
