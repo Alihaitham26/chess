@@ -12,13 +12,13 @@ function changePawn(pawn){
     let div
     if(pawn.isWhite){
         div=document.querySelector(".upgrade-white")
-        for(key in chess.blackPieces){
-            chess.blackPieces[key].onclick=()=>{}
+        for(key in board.blackPieces){
+            board.blackPieces[key].onclick=()=>{}
         }
     }else{
         div=document.querySelector(".upgrade-black")
-        for(key in chess.whitePieces){
-            chess.whitePieces[key].onclick=()=>{}
+        for(key in board.whitePieces){
+            board.whitePieces[key].onclick=()=>{}
         }
     }
     div.style.display="block"
@@ -30,7 +30,7 @@ function changePawn(pawn){
             let type=ele.dataset.type
             ele.onclick=()=>{
                 pawn.erase()
-                team=pawn.isWhite?chess.whitePieces:chess.blackPieces
+                team=pawn.isWhite?board.whitePieces:board.blackPieces
                 team["new"+type+cloneNumber]=new Piece(type,pawn.isWhite,pawn.position)
                 cloneNumber++
                 div.style.display="none"
@@ -41,11 +41,11 @@ function changePawn(pawn){
 }
 function win(team){
     //make all pieces not allowed to move
-    for(key in chess.blackPieces){
-        chess.blackPieces[key].onclick=()=>{}
+    for(key in board.blackPieces){
+        board.blackPieces[key].onclick=()=>{}
     }
-    for(key in chess.whitePieces){
-        chess.whitePieces[key].onclick=()=>{}
+    for(key in board.whitePieces){
+        board.whitePieces[key].onclick=()=>{}
     }
     document.querySelector(".win").style.display="block"
     document.querySelector(".win h2 span").innerHTML=team
@@ -61,7 +61,7 @@ function uncheck(kingPiece){
 }
 function isCheck(position,isWhite){
     isCheckTest=true
-    let enemyPeices=isWhite?chess.blackPieces:chess.whitePieces
+    let enemyPeices=isWhite?board.blackPieces:board.whitePieces
     for(let pieceKey in enemyPeices){
         for(let move of enemyPeices[pieceKey].getAvailablePlaces()){
             if(position===move){

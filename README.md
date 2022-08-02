@@ -1,5 +1,5 @@
 # 2players-chess
-## version: v1.0.0
+## version: v1.1.0
 ## author
 name: ali haitham ahmed   
 gmail: alihaitham26@gmail.com   

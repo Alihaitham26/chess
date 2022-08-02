@@ -9,16 +9,16 @@ function afterPlay(){
     //check if white and black kind is dead so killer win
     uncheck(whiteKing)
     uncheck(blackKing)
-    if(!chess.whitePieces.king.isAlive){
+    if(!board.whitePieces.king.isAlive){
         win("black")
         return
-    }else if(!chess.blackPieces.king.isAlive){
+    }else if(!board.blackPieces.king.isAlive){
         win("white")
         return
     }
     //used assign to clone object not to point for it
-    whiteKing=Object.assign({},chess.whitePieces.king )
-    blackKing=Object.assign({},chess.blackPieces.king)
+    whiteKing=Object.assign({},board.whitePieces.king )
+    blackKing=Object.assign({},board.blackPieces.king)
     /* 
     looping in white and black pieces and check for :-
         (1) if pawn go to the last row he upagrade him 
@@ -26,11 +26,11 @@ function afterPlay(){
         (3) if one turn check if allow him to click on pieces
         (4) check if there is a check
     */
-    for(let key in chess.whitePieces){
-        let piece=chess.whitePieces[key]
+    for(let key in board.whitePieces){
+        let piece=board.whitePieces[key]
         let place=piece.position
         if(!piece.isAlive){
-            delete chess.whitePieces[piece]
+            delete board.whitePieces[piece]
             continue
         }
         if(piece.type==="pawn"&&piece.position[1]==="8"){
@@ -62,12 +62,12 @@ function afterPlay(){
         }
     }
 
-    for(let key in chess.blackPieces){
-        let piece=chess.blackPieces[key]
+    for(let key in board.blackPieces){
+        let piece=board.blackPieces[key]
         let place=piece.position
         piece.getAvailablePlaces()
         if(!piece.isAlive){
-            delete chess.blackPieces[piece]
+            delete board.blackPieces[piece]
             continue
         }
         if(piece.type==="pawn"&&piece.position[1]==="1"){
