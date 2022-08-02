@@ -168,8 +168,8 @@ body {
 
 @media (max-width: 768px) {
   .board {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
   }
 }
 img::-moz-selection {
