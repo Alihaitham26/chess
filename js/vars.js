@@ -7,17 +7,7 @@ const placesInChess=[]
 //fill the array with places by add 8 places with same letter
 for(let i=0;i<letters.length;i++){
     let letter=letters[i]
-    for(let j=1;j<=8;j++){
-        placesInChess.push(letter+j)
-    }
+    for(let j=1;j<=8;j++){placesInChess.push(letter+j)}
 }
 //select and selected place using in board
-let select=false
-let selectedPiece
-//used to naming the upgraded pawn
-let isCheckTest=false
-let cloneNumber=1
-let specialMoves={}
-let afterTurn=[]
-let beforeClick=[]
-let hello=[1,2,3]
+let [select,selectedPiece,isCheckTest,cloneNumber,specialMoves,beforeClick]=[false,undefined,false,1,{},[]]

@@ -16,7 +16,6 @@ class Piece {
         this.lastPosition=null
         this.notMoved=true
         this.isFirstMove=false
-        this.lastPosition=null
         this.isAlive=true
         this.type = type
         this.isWhite = isWhite
@@ -35,22 +34,24 @@ class Piece {
         board[this.position].onclick=func
     }
     //draw peices in the board
-    draw() {
+    draw(drawInHtml=true) {
         board[this.position].isFull = true
         board[this.position].piece = this
-        board[this.position].html.innerHTML = `<img src="${this.imageSrc}">`
+        if(drawInHtml){board[this.position].html.innerHTML = `<img src="${this.imageSrc}">`}
     }
     //erase peices in the board
-    erase() {
+    erase(earseInHtml=true) {
         board[this.position].isFull = false
         board[this.position].piece = null
-        board[this.position].html.innerHTML = ""
-        board[this.position].onclick=()=>{}
+        if(earseInHtml){
+            board[this.position].html.innerHTML = ""
+            board[this.position].onclick=()=>{}
+        }
     }
     //earse peice and draw it in new place
-    moveTo(newPosition) {
+    moveTo(newPosition,drawInHtml=true,earseInHtml=true) {
         this.isFirstMove=this.notMoved
-        this.erase()
+        this.erase(earseInHtml)
         this.notMoved=false
         if(this.type==="pawn"){
             if(isOn(squaresMove(newPosition,1,0))&&board[squaresMove(newPosition,1,0)].isFull&&board[squaresMove(newPosition,1,0)].piece.type==="pawn"){
@@ -63,6 +64,6 @@ class Piece {
         this.lastPosition=this.position
         this.position = newPosition
         this.square=board[this.position]
-        this.draw()
+        this.draw(drawInHtml)
     }
 }

@@ -3,10 +3,7 @@ function squaresMove(position,x=0,y=0){
     position=position.split("")
     return (letters[letters.indexOf(position[0])+x])+(+position[1]+y)
 }
-function isOn(position){
-    //check if position in the board
-    return placesInChess.includes(position)
-}
+const isOn=(position)=>placesInChess.includes(position)
 function changePawn(pawn){
     //used to upgrade the pawn when pawn be in the last row
     let div
@@ -51,15 +48,13 @@ function win(team){
     document.querySelector(".win h2 span").innerHTML=team
     document.querySelector(".win button").onclick=()=>{window.location.reload()}
 }
-function check(kingPiece){
-    kingPiece.square.html.style.border="2px solid red"
-}
+const check=(kingPiece)=>kingPiece.square.html.style.border="2px solid red"
 function uncheck(kingPiece){
     if(kingPiece){
         kingPiece.square.html.style.border=null
     }
 }
-function isCheck(position,isWhite){
+function isCheck(position,isWhite,board=board){
     isCheckTest=true
     let enemyPeices=isWhite?board.blackPieces:board.whitePieces
     for(let pieceKey in enemyPeices){
@@ -79,6 +74,4 @@ function killIt(piece){
     board[piece.position].isFull=false
     board[piece.position].piece=null
 }
-Array.prototype.delete=function (index){
-    return [...this.slice(0,index),...this.slice(index+1,this.length)]
-}
+Array.prototype.delete=(index)=>[...this.slice(0,index),...this.slice(index+1,this.length)]

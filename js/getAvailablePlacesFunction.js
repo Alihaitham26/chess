@@ -45,7 +45,6 @@ function getAvailablePlacesFunction(piece) {
                 &&leftPawn.isPawnRightWhenMoved&&leftPawn.isFirstMove
                 &&leftPawn.positions[leftPawn.positions.length - 1]!==leftPawn.positions[leftPawn.positions.length - 2]
                 ){
-                console.log(leftPawn.positions[leftPawn.positions.length - 1]!==leftPawn.positions[leftPawn.positions.length - 2])
                 avaliblePlace.push(squaresMove(piece.position,-1,yDirection))
                 specialMoves["pawnKill"]={
                     condition:(selectedPosition)=>(selectedPosition==specialMoveLeft&&selectedPiece===piece),
@@ -60,7 +59,6 @@ function getAvailablePlacesFunction(piece) {
                 &&rightPawn.isPawnLeftWhenMoved&&rightPawn.isFirstMove
                 &&rightPawn.positions[rightPawn.positions.length - 1]!==rightPawn.positions[rightPawn.positions.length - 2]
                 ){
-                console.log(rightPawn.positions[rightPawn.positions.length - 1]!==rightPawn.positions[rightPawn.positions.length - 2])
                 avaliblePlace.push(squaresMove(piece.position,1,yDirection))
                 specialMoves["pawnKill"]={
                     condition:(selectedPosition)=>(selectedPosition==specialMoveRight&&selectedPiece===piece),

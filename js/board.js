@@ -20,7 +20,7 @@ class Board {
     }
     constructor() {
         //looping in places to make object to each place that has(place,is full with peice,peice on him,html element)
-        for (let i = 0; i < placesInChess.length; i++) {
+            for (let i = 0; i < placesInChess.length; i++) {
             let place = placesInChess[i]
             this[place] = {
                 place: place,
@@ -60,8 +60,7 @@ class Board {
                     }
                     afterPlay()
                 }
-            }
+            } 
         }
-
     }
 }
