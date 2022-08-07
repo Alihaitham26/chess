@@ -23,12 +23,12 @@ class Piece {
         this.ex = isWhite ? "w" : "b"
         this.color = isWhite ? "white" : "black"
         this.imageSrc = `imgs/${this.ex}_${this.type}.png`
-        this.getAvailablePlaces=getAvailablePlacesFunction(this)
+        this.getavailableMoves=getavailableMovesFunction(this)
         this.square=board[this.position]
         this.square.isFull = true
         this.square.piece = this
         this.draw()
-        delete this.getAvailablePlacesFunction
+        delete this.getavailableMovesFunction
     }
     set onclick(func){
         board[this.position].onclick=func

@@ -58,7 +58,7 @@ function isCheck(position,isWhite,board=board){
     isCheckTest=true
     let enemyPeices=isWhite?board.blackPieces:board.whitePieces
     for(let pieceKey in enemyPeices){
-        for(let move of enemyPeices[pieceKey].getAvailablePlaces()){
+        for(let move of enemyPeices[pieceKey].getavailableMoves()){
             if(position===move){
                 isCheckTest=false
                 return true

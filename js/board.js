@@ -39,7 +39,7 @@ class Board {
             this[place].onclick=()=>{}
             this[place].onselect=()=>{
                 select=false
-                let moves=selectedPiece.getAvailablePlaces()
+                let moves=selectedPiece.getavailableMoves()
                 for(let i=0;i<moves.length&&board[moves[i]];i++){
                     board[moves[i]].html.innerHTML=null
                     if(board[moves[i]].isFull){

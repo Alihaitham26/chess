@@ -34,7 +34,7 @@ function afterPlay(){
            if(piece.type==="pawn"&&piece.position[1]==="8"){
                changePawn(piece)
            }
-           for(let move of piece.getAvailablePlaces()){
+           for(let move of piece.getavailableMoves()){
             let king=piece.isWhite?blackKing:whiteKing
                if(move===king.position){
                    check(king)
@@ -46,7 +46,7 @@ function afterPlay(){
                        func()
                    }
                    preSelect=piece
-                   let moves=piece.getAvailablePlaces()
+                   let moves=piece.getavailableMoves()
                    for(let i=0;i<moves.length;i++){
                        if(moves[i]){
                            board[moves[i]].html.innerHTML+='<div class="dot"><div/>'
