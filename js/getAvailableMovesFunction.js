@@ -30,7 +30,7 @@ function getavailableMovesFunction(piece) {
                     availableMoves.push(superFront)
                 }
             }
-            if (isOn(front) && !board[front].isFull && !isCheckTest) {
+            if (isOn(front) && !board[front].isFull) {
                 availableMoves.push(front)
             }
             if (isOn(right) && board[right].isFull && board[right].piece.isWhite!=piece.isWhite) {

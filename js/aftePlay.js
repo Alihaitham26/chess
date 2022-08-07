@@ -32,7 +32,7 @@ function afterPlay(){
                continue
            }
            if(piece.type==="pawn"&&piece.position[1]==="8"){
-               changePawn(piece)
+               upgradePawn(piece)
            }
            for(let move of piece.getavailableMoves()){
             let king=piece.isWhite?blackKing:whiteKing
@@ -42,14 +42,11 @@ function afterPlay(){
            }
            if(isWhiteTurn==piece.isWhite){
                board[place].onclick=()=>{
-                   for(func of beforeClick){
-                       func()
-                   }
                    preSelect=piece
                    let moves=piece.getavailableMoves()
                    for(let i=0;i<moves.length;i++){
                        if(moves[i]){
-                           board[moves[i]].html.innerHTML+='<div class="dot"><div/>'
+                            board[moves[i]].html.innerHTML+='<div class="dot"><div/>'
                        }
                    }
                    select=true

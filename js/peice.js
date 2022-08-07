@@ -1,17 +1,13 @@
 class Piece {
     static piecesCreated = 0
-    
     constructor(type, isWhite, position) {
         if(type==="pawn"){
-            this.pawnSpeicalKill={
-                left:true,
-                right:true
-            }
+            this.pawnSpeicalKill={left:true,right:true}
         }
-        Piece.piecesCreated+=1
         if(!peicesNames.includes(type)){
             throw new Error(`"${type}" is not a peice in chess`)
         }
+        Piece.piecesCreated+=1
         this.positions=[]
         this.lastPosition=null
         this.notMoved=true
@@ -28,30 +24,27 @@ class Piece {
         this.square.isFull = true
         this.square.piece = this
         this.draw()
-        delete this.getavailableMovesFunction
     }
     set onclick(func){
         board[this.position].onclick=func
     }
     //draw peices in the board
-    draw(drawInHtml=true) {
+    draw() {
         board[this.position].isFull = true
         board[this.position].piece = this
-        if(drawInHtml){board[this.position].html.innerHTML = `<img src="${this.imageSrc}">`}
+        board[this.position].html.style.backgroundImage=`url(${this.imageSrc})`
     }
     //erase peices in the board
-    erase(earseInHtml=true) {
+    erase() {
         board[this.position].isFull = false
         board[this.position].piece = null
-        if(earseInHtml){
-            board[this.position].html.innerHTML = ""
-            board[this.position].onclick=()=>{}
-        }
+        board[this.position].html.style.backgroundImage=``
+        board[this.position].onclick=()=>{}
     }
     //earse peice and draw it in new place
-    moveTo(newPosition,drawInHtml=true,earseInHtml=true) {
+    moveTo(newPosition) {
         this.isFirstMove=this.notMoved
-        this.erase(earseInHtml)
+        this.erase()
         this.notMoved=false
         if(this.type==="pawn"){
             if(isOn(squaresMove(newPosition,1,0))&&board[squaresMove(newPosition,1,0)].isFull&&board[squaresMove(newPosition,1,0)].piece.type==="pawn"){
@@ -64,6 +57,6 @@ class Piece {
         this.lastPosition=this.position
         this.position = newPosition
         this.square=board[this.position]
-        this.draw(drawInHtml)
+        this.draw()
     }
 }

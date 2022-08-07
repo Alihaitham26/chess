@@ -10,14 +10,14 @@ for(let i=0;i<letters.length;i++){
     for(let j=1;j<=8;j++){placesInChess.push(letter+j)}
 }
 //select and selected place using in board
-let [select,selectedPiece,isCheckTest,cloneNumber,specialMoves,beforeClick]=[false,undefined,false,1,{},[]]
+let [select,selectedPiece,cloneNumber,specialMoves]=[false,undefined,1,{},[]]
 function squaresMove(position,x=0,y=0){
     //used to move in board as cord
     position=position.split("")
     return (letters[letters.indexOf(position[0])+x])+(+position[1]+y)
 }
 const isOn=(position)=>placesInChess.includes(position)
-function changePawn(pawn){
+function upgradePawn(pawn){
     //used to upgrade the pawn when pawn be in the last row
     let div
     if(pawn.isWhite){
@@ -68,17 +68,14 @@ function uncheck(kingPiece){
     }
 }
 function isCheck(position,isWhite,board=board){
-    isCheckTest=true
     let enemyPeices=isWhite?board.blackPieces:board.whitePieces
     for(let pieceKey in enemyPeices){
         for(let move of enemyPeices[pieceKey].getavailableMoves()){
             if(position===move){
-                isCheckTest=false
                 return true
             }
         }
     }
-    isCheckTest=false
     return false
 }
 function killIt(piece){

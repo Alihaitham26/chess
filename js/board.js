@@ -42,9 +42,7 @@ class Board {
                 let moves=selectedPiece.getavailableMoves()
                 for(let i=0;i<moves.length&&board[moves[i]];i++){
                     board[moves[i]].html.innerHTML=null
-                    if(board[moves[i]].isFull){
-                        board[moves[i]].piece.draw()
-                    }
+                    board[moves[i]].html.style.border=""
                 }
                 if(moves.includes(place)){
                     if(this[place].isFull){

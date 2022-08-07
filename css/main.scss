@@ -15,6 +15,7 @@ nav{
         line-height: 40px;
     }
 }
+
 .board {
     background-color: blue;
     position: absolute;
@@ -27,11 +28,10 @@ nav{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
-}
-%image{
-    img{
-        width: 70%;
-        height: 90%;
+    div{
+        background-size:76%;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 }
 @mixin globalSquare {
@@ -57,6 +57,7 @@ $vertical2: "b", "d", "f", "h";
 $vertical:'a','b','c','d','e','f','g','h';
 @each $letter in $vertical {
     .#{$letter}1::before{
+        font-size: 14pt;
         content: $letter;
         position: absolute;
         z-index: 1;
@@ -67,6 +68,7 @@ $vertical:'a','b','c','d','e','f','g','h';
 $i:1;
 @while $i<9 {
     .a#{$i}::after{
+        font-size: 14pt;
         content: ""+$i;
         position: absolute;
         z-index: 1;
@@ -81,14 +83,12 @@ $i:1;
     @while $i<9 {
         .#{$letter}#{$i} {
             @extend %color1;
-            @extend %image;
         }
 
         $i: $i+1;
 
         .#{$letter}#{$i} {
             @extend %color2;
-            @extend %image;
         }
 
         $i: $i+1;
@@ -101,14 +101,12 @@ $i:1;
     @while $i<9 {
         .#{$letter}#{$i} {
             @extend %color2;
-            @extend %image;
         }
 
         $i: $i+1;
 
         .#{$letter}#{$i} {
             @extend %color1;
-            @extend %image;
         }
 
         $i: $i+1;

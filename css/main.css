@@ -32,10 +32,10 @@ nav h1 {
   flex-wrap: wrap;
   flex-direction: column-reverse;
 }
-
-.h8 img, .h7 img, .h6 img, .h5 img, .h4 img, .h3 img, .h2 img, .h1 img, .f8 img, .f7 img, .f6 img, .f5 img, .f4 img, .f3 img, .f2 img, .f1 img, .d8 img, .d7 img, .d6 img, .d5 img, .d4 img, .d3 img, .d2 img, .d1 img, .b8 img, .b7 img, .b6 img, .b5 img, .b4 img, .b3 img, .b2 img, .b1 img, .g8 img, .g7 img, .g6 img, .g5 img, .g4 img, .g3 img, .g2 img, .g1 img, .e8 img, .e7 img, .e6 img, .e5 img, .e4 img, .e3 img, .e2 img, .e1 img, .c8 img, .c7 img, .c6 img, .c5 img, .c4 img, .c3 img, .c2 img, .c1 img, .a8 img, .a7 img, .a6 img, .a5 img, .a4 img, .a3 img, .a2 img, .a1 img {
-  width: 70%;
-  height: 90%;
+.board div {
+  background-size: 76%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .h7, .h5, .h3, .h1, .f7, .f5, .f3, .f1, .d7, .d5, .d3, .d1, .b7, .b5, .b3, .b1, .g8, .g6, .g4, .g2, .e8, .e6, .e4, .e2, .c8, .c6, .c4, .c2, .a8, .a6, .a4, .a2 {
@@ -59,6 +59,7 @@ nav h1 {
 }
 
 .a1::before {
+  font-size: 14pt;
   content: "a";
   position: absolute;
   z-index: 1;
@@ -67,6 +68,7 @@ nav h1 {
 }
 
 .b1::before {
+  font-size: 14pt;
   content: "b";
   position: absolute;
   z-index: 1;
@@ -75,6 +77,7 @@ nav h1 {
 }
 
 .c1::before {
+  font-size: 14pt;
   content: "c";
   position: absolute;
   z-index: 1;
@@ -83,6 +86,7 @@ nav h1 {
 }
 
 .d1::before {
+  font-size: 14pt;
   content: "d";
   position: absolute;
   z-index: 1;
@@ -91,6 +95,7 @@ nav h1 {
 }
 
 .e1::before {
+  font-size: 14pt;
   content: "e";
   position: absolute;
   z-index: 1;
@@ -99,6 +104,7 @@ nav h1 {
 }
 
 .f1::before {
+  font-size: 14pt;
   content: "f";
   position: absolute;
   z-index: 1;
@@ -107,6 +113,7 @@ nav h1 {
 }
 
 .g1::before {
+  font-size: 14pt;
   content: "g";
   position: absolute;
   z-index: 1;
@@ -115,6 +122,7 @@ nav h1 {
 }
 
 .h1::before {
+  font-size: 14pt;
   content: "h";
   position: absolute;
   z-index: 1;
@@ -123,6 +131,7 @@ nav h1 {
 }
 
 .a1::after {
+  font-size: 14pt;
   content: "1";
   position: absolute;
   z-index: 1;
@@ -131,6 +140,7 @@ nav h1 {
 }
 
 .a2::after {
+  font-size: 14pt;
   content: "2";
   position: absolute;
   z-index: 1;
@@ -139,6 +149,7 @@ nav h1 {
 }
 
 .a3::after {
+  font-size: 14pt;
   content: "3";
   position: absolute;
   z-index: 1;
@@ -147,6 +158,7 @@ nav h1 {
 }
 
 .a4::after {
+  font-size: 14pt;
   content: "4";
   position: absolute;
   z-index: 1;
@@ -155,6 +167,7 @@ nav h1 {
 }
 
 .a5::after {
+  font-size: 14pt;
   content: "5";
   position: absolute;
   z-index: 1;
@@ -163,6 +176,7 @@ nav h1 {
 }
 
 .a6::after {
+  font-size: 14pt;
   content: "6";
   position: absolute;
   z-index: 1;
@@ -171,6 +185,7 @@ nav h1 {
 }
 
 .a7::after {
+  font-size: 14pt;
   content: "7";
   position: absolute;
   z-index: 1;
@@ -179,6 +194,7 @@ nav h1 {
 }
 
 .a8::after {
+  font-size: 14pt;
   content: "8";
   position: absolute;
   z-index: 1;

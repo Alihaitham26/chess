@@ -1,8 +1,9 @@
 # 2players-chess
-## version: v1.2.0
+## version: v1.3.1
 ### what's new?
-#### style the game website
-coloring the background and make a nav
+#### pieces image
+use background image css property instead of make element in html
+#### delet some of unuseful code
 ## author
 name: ali haitham ahmed   
 gmail: alihaitham26@gmail.com   
