@@ -13,19 +13,19 @@ function getavailableMovesFunction(piece) {
     }
     //pawn moves function
     if (piece.type === "pawn") {
-        let yDirection=piece.isWhite?1:-1
-        let ySpecial=piece.isWhite?"5":"4"
+        let yDirection = piece.isWhite ? 1 : -1
+        let ySpecial = piece.isWhite ? "5" : "4"
         return () => {
             let availableMoves = []
             let front = squaresMove(piece.position, 0, yDirection)
             let right = squaresMove(piece.position, 1, yDirection)
             let left = squaresMove(piece.position, -1, yDirection)
-            let specialKillLeft=squaresMove(piece.position, -1,0)
-            let specialKillRight=squaresMove(piece.position, 1,0)
-            let specialMoveLeft=squaresMove(piece.position, -1,yDirection)
-            let specialMoveRight=squaresMove(piece.position, 1,yDirection)
+            let specialKillLeft = squaresMove(piece.position, -1, 0)
+            let specialKillRight = squaresMove(piece.position, 1, 0)
+            let specialMoveLeft = squaresMove(piece.position, -1, yDirection)
+            let specialMoveRight = squaresMove(piece.position, 1, yDirection)
             if (piece.notMoved) {
-                let superFront = squaresMove(piece.position, 0, 2*yDirection)
+                let superFront = squaresMove(piece.position, 0, 2 * yDirection)
                 if (isOn(superFront) && !board[superFront].isFull && !board[front].isFull) {
                     availableMoves.push(superFront)
                 }
@@ -33,40 +33,42 @@ function getavailableMovesFunction(piece) {
             if (isOn(front) && !board[front].isFull) {
                 availableMoves.push(front)
             }
-            if (isOn(right) && board[right].isFull && board[right].piece.isWhite!=piece.isWhite) {
+            if (isOn(right) && board[right].isFull && board[right].piece.isWhite != piece.isWhite) {
                 availableMoves.push(right)
             }
-            if (isOn(left) && board[left].isFull && board[left].piece.isWhite!=piece.isWhite) {
+            if (isOn(left) && board[left].isFull && board[left].piece.isWhite != piece.isWhite) {
                 availableMoves.push(left)
             }
-            if(piece.pawnSpeicalKill.left&&isOn(specialKillLeft)&&piece.position[1]===ySpecial&board[specialKillLeft].isFull){
-                let leftPawn=board[specialKillLeft].piece
-            if(leftPawn.isWhite!==piece.isWhite
-                &&leftPawn.isPawnRightWhenMoved&&leftPawn.isFirstMove
-                &&leftPawn.positions[leftPawn.positions.length - 1]!==leftPawn.positions[leftPawn.positions.length - 2]
-                ){
-                availableMoves.push(squaresMove(piece.position,-1,yDirection))
-                specialMoves["pawnKill"]={
-                    condition:(selectedPosition)=>(selectedPosition==specialMoveLeft&&selectedPiece===piece),
-                    action:()=>{
-                        killIt(leftPawn)
+            if (piece.pawnSpeicalKill.left && isOn(specialKillLeft) && piece.position[1] === ySpecial & board[specialKillLeft].isFull) {
+                let leftPawn = board[specialKillLeft].piece
+                if (leftPawn.isWhite !== piece.isWhite
+                    && leftPawn.isPawnRightWhenMoved && leftPawn.isFirstMove
+                    && leftPawn.positions[leftPawn.positions.length - 1] !== leftPawn.positions[leftPawn.positions.length - 2]
+                ) {
+                    availableMoves.push(squaresMove(piece.position, -1, yDirection))
+                    specialMoves["pawnKill"] = {
+                        condition: (selectedPosition) => (selectedPosition == specialMoveLeft && selectedPiece === piece),
+                        action: () => {
+                            killIt(leftPawn)
+                        }
                     }
                 }
-            }}
-            if(piece.pawnSpeicalKill.right&&isOn(specialKillRight)&&piece.position[1]===ySpecial&board[specialKillRight].isFull){
-                let rightPawn=board[specialKillRight].piece
-            if(rightPawn.isWhite!==piece.isWhite
-                &&rightPawn.isPawnLeftWhenMoved&&rightPawn.isFirstMove
-                &&rightPawn.positions[rightPawn.positions.length - 1]!==rightPawn.positions[rightPawn.positions.length - 2]
-                ){
-                availableMoves.push(squaresMove(piece.position,1,yDirection))
-                specialMoves["pawnKill"]={
-                    condition:(selectedPosition)=>(selectedPosition==specialMoveRight&&selectedPiece===piece),
-                    action:()=>{
-                        killIt(rightPawn)
+            }
+            if (piece.pawnSpeicalKill.right && isOn(specialKillRight) && piece.position[1] === ySpecial & board[specialKillRight].isFull) {
+                let rightPawn = board[specialKillRight].piece
+                if (rightPawn.isWhite !== piece.isWhite
+                    && rightPawn.isPawnLeftWhenMoved && rightPawn.isFirstMove
+                    && rightPawn.positions[rightPawn.positions.length - 1] !== rightPawn.positions[rightPawn.positions.length - 2]
+                ) {
+                    availableMoves.push(squaresMove(piece.position, 1, yDirection))
+                    specialMoves["pawnKill"] = {
+                        condition: (selectedPosition) => (selectedPosition == specialMoveRight && selectedPiece === piece),
+                        action: () => {
+                            killIt(rightPawn)
+                        }
                     }
                 }
-            }}
+            }
             return availableMoves
         }
     } else if (piece.type === "rook") {

@@ -3,6 +3,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: #444444;
+    font-size: 15pt;
 }
 nav{
     height: 40px;
@@ -15,13 +16,21 @@ nav{
         line-height: 40px;
     }
 }
-
+.scores{
+    display: flex;
+    margin: 10px auto;
+    background-color: #222222;
+    width: 200px;
+    padding: 3px 18px;
+    justify-content: space-between;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+}
 .board {
+    position: relative;
     background-color: blue;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
+    margin: 10px auto;
     $demention: 500px;
     width: $demention ;
     height: $demention ;
@@ -143,7 +152,7 @@ img::selection{
     background-color: #121;
     color: #fff;
     padding: 10px;
-    width: 50%;
+    width: 200px;
     border-radius: 10px;
     button{
         width: 80px;

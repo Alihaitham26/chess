@@ -1,9 +1,9 @@
 # 2players-chess
-## version: v1.3.1
+## version: v1.4.2
 ### what's new?
-#### pieces image
-use background image css property instead of make element in html
-#### delet some of unuseful code
+#### 1) reset game when team win insted of reload
+#### 2) add score to the game
+#### 3) delet some of unuseful code
 ## author
 name: ali haitham ahmed   
 gmail: alihaitham26@gmail.com   
