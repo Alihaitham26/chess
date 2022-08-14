@@ -1,9 +1,7 @@
 # 2players-chess
-## version: v1.4.2
+## version: v1.4.3
 ### what's new?
-#### 1) reset game when team win insted of reload
-#### 2) add score to the game
-#### 3) delet some of unuseful code
+#### make class for evry piece
 ## author
 name: ali haitham ahmed   
 gmail: alihaitham26@gmail.com   

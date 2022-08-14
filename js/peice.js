@@ -1,9 +1,6 @@
 class Piece {
     static piecesCreated = 0
     constructor(type, isWhite, position) {
-        if (type === "pawn") {
-            this.pawnSpeicalKill = { left: true, right: true }
-        }
         if (!peicesNames.includes(type)) {
             throw new Error(`"${type}" is not a peice in chess`)
         }
@@ -19,7 +16,7 @@ class Piece {
         this.ex = isWhite ? "w" : "b"
         this.color = isWhite ? "white" : "black"
         this.imageSrc = `imgs/${this.ex}_${this.type}.png`
-        this.getavailableMoves = getavailableMovesFunction(this)
+        
         board[this.position].isFull = true
         board[this.position].piece = this
         this.draw()
